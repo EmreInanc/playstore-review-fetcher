@@ -53,12 +53,16 @@ npm install googleapis
 2. Oluşturduğunuz servis hesabının e-posta adresini davet edin
 3. **Finansal veriler hariç** görüntüleme iznini verin
 
-### 5. Paket adını güncelleyin
+### 5. Paket adını ve Google Cloud Console dan aldığınız play-api-xxx.json dosyasının adını güncelleyin
 
 `fetch-reviews.js` dosyasını açın ve şu satırı kendi uygulamanıza göre düzenleyin:
 
 ```js
-const PACKAGE_NAME = 'com.example.yourapp'; // ← buraya kendi paket adınızı yazın
+// Google Play API servis hesabı JSON anahtar dosyasının adı
+const KEY_FILE_NAME = 'play-api-credentials.json';
+
+// Uygulamanızın Google Play paket adı (örn: com.sirket.uygulama)
+const PACKAGE_NAME = 'com.example.yourapp';
 ```
 
 ---
