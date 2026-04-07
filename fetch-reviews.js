@@ -23,18 +23,6 @@ const privateKey = key.private_key.replace(/\\n/g, '\n');
 // Google Play Publisher API temel URL'i
 const BASE_URL = 'https://androidpublisher.googleapis.com/androidpublisher/v3/applications';
 
-// ─────────────────────────────────────────────
-// Yazar adını anonim hale getirir
-// Örnek: "Ahmet Yılmaz" → "Ahmet Y."
-// ─────────────────────────────────────────────
-function anonymizeName(fullName) {
-  if (!fullName || fullName === 'Gizli Kullanıcı') return 'Gizli Kullanıcı';
-  // Her kelimenin sadece baş harfini alıyoruz
-  // Örnek: "Ahmet Yılmaz" → "A. Y."
-  return fullName.trim().split(' ')
-    .map(word => word[0] + '.')
-    .join(' ');
-}
 
 // ─────────────────────────────────────────────
 // Verilen URL'e Authorization header ile GET isteği atar
@@ -94,9 +82,7 @@ async function fetchLatestReviews() {
     // Google Play yorum verisi iç içe JSON yapısındadır
     const userComment = review.comments[0].userComment;
 
-    // Yazar adını anonim hale getiriyoruz
-    const rawAuthor = review.authorName || 'Gizli Kullanıcı';
-    const author = anonymizeName(rawAuthor);
+    const author = review.authorName || 'Gizli Kullanıcı';
 
     const stars = userComment.starRating;
     const text = userComment.text ? userComment.text.trim() : '(Yorum metni yok)';
