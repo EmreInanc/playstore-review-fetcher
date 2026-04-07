@@ -55,7 +55,7 @@ npm install googleapis
 
 ### 5. Paket adını güncelleyin
 
-`test.js` dosyasını açın ve şu satırı kendi uygulamanıza göre düzenleyin:
+`fetch-reviews.js` dosyasını açın ve şu satırı kendi uygulamanıza göre düzenleyin:
 
 ```js
 const PACKAGE_NAME = 'com.example.yourapp'; // ← buraya kendi paket adınızı yazın
@@ -66,7 +66,7 @@ const PACKAGE_NAME = 'com.example.yourapp'; // ← buraya kendi paket adınızı
 ## ▶️ Çalıştırma
 
 ```bash
-node test.js
+node fetch-reviews.js
 ```
 
 ---
