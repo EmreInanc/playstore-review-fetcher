@@ -1,73 +1,71 @@
 # 📱 Play Store Review Fetcher
 
-Google Play Store yorumlarını terminal üzerinden çeken minimal bir Node.js scripti.
+A minimal Node.js script that fetches your Google Play Store reviews directly from the terminal.
 
-Play Console'un mobil arayüzü yorumları takip etmek için kullanışlı değil — her birini teker teker açmak, filtreleme yapamamak can sıkıcı. Bu script sayesinde tek komutla tüm yorumları temiz bir formatta görürsünüz.
-
-Yazar isimleri otomatik olarak anonim hale getirilir. (örn: `Ahmet Yılmaz` → `Ahmet Y.`)
+Play Console's mobile UI makes it painful to track reviews — you open them one by one, no filtering, no export. This script gives you all your reviews in a clean, readable format with a single command.
 
 ---
 
-## 🖥️ Örnek Çıktı
+## 🖥️ Example Output
 
 ```
-🔍 Son yorumlar çekiliyor...
+🔍 Fetching latest reviews...
 
-✅ Toplam 6 güncel yorum bulundu:
+✅ Found 6 review(s):
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-👤 Yazar  : Ahmet Y.
-🌟 Puan   : ⭐⭐⭐⭐⭐ (5/5)
-📱 Cihaz  : Samsung Galaxy S24 Ultra
-💬 Yorum  : "Çok güzel tasarlanmış, her şeye erişim çok kolay."
+👤 Author  : John Doe
+🌟 Rating  : ⭐⭐⭐⭐⭐ (5/5)
+📱 Device  : Samsung Galaxy S24 Ultra
+💬 Review  : "First time I've seen a free app like this on the market."
 ─────────────────────────────────────────────────
 ```
 
 ---
 
-## 🚀 Kurulum
+## 🚀 Setup
 
-### 1. Gereksinimler
+### 1. Requirements
 
-- Node.js (v14 veya üzeri)
-- Google Play Console erişimi olan bir Google hesabı
+- Node.js v14 or higher
+- A Google account with access to Google Play Console
 
-### 2. Bağımlılıkları yükleyin
+### 2. Install dependencies
 
 ```bash
 npm install googleapis
 ```
 
-### 3. Google Play API servis hesabı oluşturun
+### 3. Create a Google Play API service account
 
-1. [Google Cloud Console](https://console.cloud.google.com/) adresine gidin
-2. Yeni bir proje oluşturun veya mevcut projeyi seçin
-3. **APIs & Services → Enable APIs** kısmından `Google Play Android Developer API`'yi etkinleştirin
-4. **IAM & Admin → Service Accounts** bölümünden yeni bir servis hesabı oluşturun
-5. Oluşturulan hesap için JSON anahtar dosyası indirin
-6. İndirilen dosyayı `play-api-credentials.json` adıyla script ile aynı klasöre koyun
+1. Go to [Google Cloud Console](https://console.cloud.google.com/)
+2. Create a new project or select an existing one
+3. Enable the **Google Play Android Developer API** under APIs & Services
+4. Go to **IAM & Admin → Service Accounts** and create a new service account
+5. Generate and download a JSON key for the service account
+6. Rename the downloaded file to `play-api-credentials.json` and place it in the same folder as the script
 
-### 4. Play Console'da servis hesabına yetki verin
+### 4. Grant access in Play Console
 
-1. [Play Console](https://play.google.com/console) → **Kullanıcılar ve İzinler** bölümüne gidin
-2. Oluşturduğunuz servis hesabının e-posta adresini davet edin
-3. **Finansal veriler hariç** görüntüleme iznini verin
+1. Go to [Play Console](https://play.google.com/console) → **Users and Permissions**
+2. Invite the service account email address
+3. Grant **View app information** permission (no financial access needed)
 
-### 5. Paket adını ve Google Cloud Console dan aldığınız play-api-xxx.json dosyasının adını güncelleyin
+### 5. Update your package name and the JSON key file name from Google Cloud Console
 
-`fetch-reviews.js` dosyasını açın ve şu satırı kendi uygulamanıza göre düzenleyin:
+Open `fetch-reviews.js` and update the following lines:
 
 ```js
-// Google Play API servis hesabı JSON anahtar dosyasının adı
+// Name of your Google Play API service account JSON key file
 const KEY_FILE_NAME = 'play-api-credentials.json';
 
-// Uygulamanızın Google Play paket adı (örn: com.sirket.uygulama)
+// Your app's Google Play package name (e.g. com.company.appname)
 const PACKAGE_NAME = 'com.example.yourapp';
 ```
 
 ---
 
-## ▶️ Çalıştırma
+## ▶️ Run
 
 ```bash
 node fetch-reviews.js
@@ -75,10 +73,10 @@ node fetch-reviews.js
 
 ---
 
-## 🔒 Güvenlik Notu
+## 🔒 Security Note
 
-`play-api-credentials.json` dosyanızı **kesinlikle GitHub'a yüklemeyin.**  
-`.gitignore` dosyanıza şu satırı eklediğinizden emin olun:
+**Never commit your `play-api-credentials.json` to GitHub.**
+Make sure your `.gitignore` includes:
 
 ```
 play-api-credentials.json
@@ -86,16 +84,16 @@ play-api-credentials.json
 
 ---
 
-## 📦 Kullanılan Paketler
+## 📦 Dependencies
 
-| Paket | Açıklama |
+| Package | Description |
 |---|---|
-| `googleapis` | Google API kimlik doğrulaması ve erişimi |
-| `https` | HTTP istekleri (Node.js built-in) |
-| `fs` / `path` | Dosya okuma (Node.js built-in) |
+| `googleapis` | Google API authentication and access |
+| `https` | HTTP requests (Node.js built-in) |
+| `fs` / `path` | File reading (Node.js built-in) |
 
 ---
 
-## 📄 Lisans
+## 📄 License
 
-MIT — dilediğiniz gibi kullanabilirsiniz.
+MIT — use it however you like.
