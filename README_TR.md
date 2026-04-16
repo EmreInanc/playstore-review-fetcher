@@ -73,18 +73,8 @@ const PACKAGE_NAME = 'com.example.yourapp';
 node fetch-reviews.js
 ```
 
----
 
-## 🔒 Güvenlik Notu
 
-`play-api-credentials.json` dosyanızı **kesinlikle GitHub'a yüklemeyin.**  
-`.gitignore` dosyanıza şu satırı eklediğinizden emin olun:
-
-```
-play-api-credentials.json
-```
-
----
 
 ## 📦 Kullanılan Paketler
 
