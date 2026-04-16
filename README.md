@@ -71,14 +71,7 @@ const PACKAGE_NAME = 'com.example.yourapp';
 node fetch-reviews.js
 ```
 
----
 
-## 🔒 Security Note
-
-**Never commit your `play-api-credentials.json` to GitHub.**
-Make sure your `.gitignore` includes:
-
-```
 play-api-credentials.json
 ```
 
